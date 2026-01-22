@@ -1,5 +1,10 @@
 import { useEffect, useState } from "react";
-import { Waves, Anchor } from "lucide-react";
+import { Waves } from "lucide-react";
+import bosphorusImg from "@/assets/bosphorus.jpg";
+import suezImg from "@/assets/suez-canal.jpg";
+import mediterraneanImg from "@/assets/mediterranean.jpg";
+import redSeaImg from "@/assets/red-sea.jpg";
+import japanSeaImg from "@/assets/japan-sea.jpg";
 
 const SeasSlide = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -23,33 +28,28 @@ const SeasSlide = () => {
   const seas = [
     {
       name: "ბოსფორის სრუტე",
-      description: "ევროპა-აზიის ბუნებრივი საზღვარი",
-      icon: "🌊",
-      color: "from-blue-500/20 to-cyan-500/20"
+      description: "ევროპისა და აზიის ბუნებრივი საზღვარი",
+      image: bosphorusImg,
     },
     {
       name: "სუეცის არხი",
-      description: "ადამიანის შექმნილი გზა",
-      icon: "⚓",
-      color: "from-cyan-500/20 to-teal-500/20"
+      description: "ადამიანის ხელით შექმნილი საზღვაო გზა",
+      image: suezImg,
     },
     {
       name: "ხმელთაშუა ზღვა",
       description: "ცივილიზაციების გზაჯვარედინი",
-      icon: "🌅",
-      color: "from-teal-500/20 to-blue-500/20"
+      image: mediterraneanImg,
     },
     {
       name: "წითელი ზღვა",
       description: "თბილი წყლების სამეფო",
-      icon: "🐚",
-      color: "from-red-500/20 to-orange-500/20"
+      image: redSeaImg,
     },
     {
       name: "იაპონიის ზღვა",
-      description: "მოგზაურობის დასასრული",
-      icon: "🏔️",
-      color: "from-indigo-500/20 to-purple-500/20"
+      description: "მოგზაურობის საბოლოო დანიშნულება",
+      image: japanSeaImg,
     },
   ];
 
@@ -71,29 +71,41 @@ const SeasSlide = () => {
             <span className="text-accent uppercase tracking-widest text-sm font-medium">წყლები</span>
           </div>
           <h2 className="font-display text-4xl md:text-6xl font-bold mb-4">
-            გავლილი <span className="text-gradient">ზღვები</span>
+            გავლილი <span className="text-gradient">ზღვები და სრუტეები</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            სტამბოლიდან ვლადივოსტოკამდე გზაზე გავივლით მსოფლიოს ყველაზე მნიშვნელოვან წყლის მარშრუტებს
+            სტამბოლიდან ვლადივოსტოკამდე გზაზე გავივლით მსოფლიოს უმნიშვნელოვანეს საზღვაო მარშრუტებს
           </p>
         </div>
 
-        {/* Seas grid */}
+        {/* Seas grid with real images */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {seas.map((sea, index) => (
             <div
               key={sea.name}
-              className={`${isVisible ? 'animate-fade-up' : 'opacity-0'}`}
+              className={`${isVisible ? 'animate-fade-up' : 'opacity-0'} ${index === 4 ? 'md:col-span-2 lg:col-span-1' : ''}`}
               style={{ animationDelay: `${(index + 1) * 150}ms` }}
             >
-              <div className={`glass-card p-6 h-full group hover:scale-105 transition-transform duration-300 bg-gradient-to-br ${sea.color}`}>
-                <div className="text-4xl mb-4">{sea.icon}</div>
-                <h3 className="font-display text-xl font-semibold mb-2 text-foreground group-hover:text-accent transition-colors">
-                  {sea.name}
-                </h3>
-                <p className="text-muted-foreground text-sm">
-                  {sea.description}
-                </p>
+              <div className="glass-card overflow-hidden group hover:scale-[1.02] transition-transform duration-300">
+                {/* Image */}
+                <div className="aspect-video relative overflow-hidden">
+                  <img 
+                    src={sea.image} 
+                    alt={sea.name}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
+                </div>
+                
+                {/* Content */}
+                <div className="p-6">
+                  <h3 className="font-display text-xl font-semibold mb-2 text-foreground group-hover:text-accent transition-colors">
+                    {sea.name}
+                  </h3>
+                  <p className="text-muted-foreground text-sm">
+                    {sea.description}
+                  </p>
+                </div>
               </div>
             </div>
           ))}
@@ -105,7 +117,7 @@ const SeasSlide = () => {
             {[1, 2, 3, 4, 5].map((_, i) => (
               <div key={i} className="flex items-center">
                 <div className="w-3 h-3 rounded-full bg-accent/60" />
-                {i < 4 && <div className="w-16 md:w-24 h-0.5 bg-gradient-to-r from-accent/60 to-accent/30" />}
+                {i < 4 && <div className="w-12 md:w-20 h-0.5 bg-gradient-to-r from-accent/60 to-accent/30" />}
               </div>
             ))}
           </div>

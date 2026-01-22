@@ -73,11 +73,11 @@ const ConclusionSlide = () => {
               <Globe2 className="w-10 h-10 text-accent" />
             </div>
             <h3 className="font-display text-2xl md:text-3xl font-bold mb-4">
-              აზია - მსოფლიოს ყველაზე დიდი და მრავალფეროვანი კონტინენტი
+              აზია — მსოფლიოს უდიდესი და უმრავალფეროვანესი კონტინენტი
             </h3>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              სტამბოლიდან ვლადივოსტოკამდე - 10,000+ კილომეტრი გეოგრაფიული აღმოჩენებით, 
-              კულტურული მემკვიდრეობით და ბუნებრივი სილამაზით სავსე გზა.
+              სტამბოლიდან ვლადივოსტოკამდე — 10,000 კილომეტრზე მეტი გეოგრაფიული აღმოჩენებით, 
+              კულტურული მემკვიდრეობითა და ბუნებრივი სილამაზით სავსე გზა.
             </p>
           </div>
 
@@ -92,12 +92,12 @@ const ConclusionSlide = () => {
               <div className="text-sm text-muted-foreground">ზღვა</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-gradient mb-2">3</div>
+              <div className="text-4xl font-bold text-gradient mb-2">4</div>
               <div className="text-sm text-muted-foreground">ნახევარკუნძული</div>
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold text-gradient mb-2">2</div>
-              <div className="text-sm text-muted-foreground">არხი/სრუტე</div>
+              <div className="text-sm text-muted-foreground">კუნძული</div>
             </div>
           </div>
         </div>
@@ -105,7 +105,7 @@ const ConclusionSlide = () => {
         {/* Footer */}
         <div className={`text-center mt-20 ${isVisible ? 'animate-fade-in delay-1000' : 'opacity-0'}`}>
           <p className="text-muted-foreground text-sm">
-            გმადლობთ ყურადღებისთვის 🙏
+            გმადლობთ ყურადღებისთვის! 🙏
           </p>
         </div>
       </div>
