@@ -54,7 +54,7 @@ const HeroSlide = () => {
         {/* Scroll indicator */}
         <div className="opacity-0 animate-fade-up delay-500">
           <div className="flex flex-col items-center gap-2">
-            <span className="text-sm text-muted-foreground">გადაახვიე ქვემოთ</span>
+            <span className="text-sm text-muted-foreground">გადაახვიეთ ქვემოთ</span>
             <div className="w-6 h-10 border-2 border-muted-foreground/30 rounded-full flex items-start justify-center p-1">
               <div className="w-1.5 h-3 bg-accent rounded-full animate-bounce" />
             </div>

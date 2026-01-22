@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { Mountain, Globe } from "lucide-react";
+import sriLankaImg from "@/assets/sri-lanka.jpg";
+import japanImg from "@/assets/japan.jpg";
 
 const IslandsSlide = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -27,6 +29,11 @@ const IslandsSlide = () => {
       fact: "აზიისა და ევროპის ხიდი"
     },
     {
+      name: "არაბეთის ნახევარკუნძული",
+      location: "საუდის არაბეთი",
+      fact: "მსოფლიოს უდიდესი ნახევარკუნძული"
+    },
+    {
       name: "ინდოეთის ნახევარკუნძული",
       location: "ინდოეთი",
       fact: "სამხრეთ აზიის გული"
@@ -39,8 +46,16 @@ const IslandsSlide = () => {
   ];
 
   const islands = [
-    { name: "შრი-ლანკა", emoji: "🏝️", description: "ინდოეთის ოკეანის მარგალიტი" },
-    { name: "იაპონია", emoji: "🗾", description: "ამომავალი მზის ქვეყანა" },
+    { 
+      name: "შრი-ლანკა", 
+      description: "ინდოეთის ოკეანის მარგალიტი",
+      image: sriLankaImg,
+    },
+    { 
+      name: "იაპონია", 
+      description: "ამომავალი მზის ქვეყანა",
+      image: japanImg,
+    },
   ];
 
   return (
@@ -60,7 +75,7 @@ const IslandsSlide = () => {
             <span className="text-accent uppercase tracking-widest text-sm font-medium">ტერიტორიები</span>
           </div>
           <h2 className="font-display text-4xl md:text-6xl font-bold mb-4">
-            კუნძულები & <span className="text-gradient">ნახევარკუნძულები</span>
+            კუნძულები და <span className="text-gradient">ნახევარკუნძულები</span>
           </h2>
         </div>
 
@@ -71,11 +86,11 @@ const IslandsSlide = () => {
               <Globe className="w-5 h-5" />
               ნახევარკუნძულები
             </h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {peninsulas.map((item, index) => (
                 <div
                   key={item.name}
-                  className={`glass-card p-6 border-l-4 border-l-accent hover:border-l-primary transition-colors ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}
+                  className={`glass-card p-5 border-l-4 border-l-accent hover:border-l-primary transition-colors ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}
                   style={{ animationDelay: `${(index + 2) * 150}ms` }}
                 >
                   <h4 className="font-display text-lg font-semibold mb-1">{item.name}</h4>
@@ -86,7 +101,7 @@ const IslandsSlide = () => {
             </div>
           </div>
 
-          {/* Islands */}
+          {/* Islands with real images */}
           <div className={`${isVisible ? 'animate-slide-left delay-400' : 'opacity-0'}`}>
             <h3 className="text-xl font-semibold text-accent mb-6 flex items-center gap-2">
               <span className="text-2xl">🏝️</span>
@@ -96,11 +111,18 @@ const IslandsSlide = () => {
               {islands.map((island, index) => (
                 <div
                   key={island.name}
-                  className={`glass-card p-8 flex items-center gap-6 group hover:scale-[1.02] transition-transform ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}
-                  style={{ animationDelay: `${(index + 4) * 150}ms` }}
+                  className={`glass-card overflow-hidden group hover:scale-[1.02] transition-transform ${isVisible ? 'animate-fade-up' : 'opacity-0'}`}
+                  style={{ animationDelay: `${(index + 5) * 150}ms` }}
                 >
-                  <div className="text-6xl floating">{island.emoji}</div>
-                  <div>
+                  <div className="aspect-video relative overflow-hidden">
+                    <img 
+                      src={island.image} 
+                      alt={island.name}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-transparent to-transparent" />
+                  </div>
+                  <div className="p-6">
                     <h4 className="font-display text-2xl font-semibold mb-2 group-hover:text-accent transition-colors">
                       {island.name}
                     </h4>

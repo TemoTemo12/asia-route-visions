@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
 import { BookOpen, Star } from "lucide-react";
+import bosphorusImg from "@/assets/bosphorus.jpg";
+import suezImg from "@/assets/suez-canal.jpg";
+import japanSeaImg from "@/assets/japan-sea.jpg";
 
 const DiarySlide = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -24,23 +27,23 @@ const DiarySlide = () => {
     {
       title: "ბოსფორის სრუტე",
       subtitle: "მოგზაურობის დასაწყისი",
-      content: "ევროპასა და აზიას შორის ბუნებრივი გზა. სტრატეგიული მნიშვნელობის სრუტე, რომელიც საუკუნეების განმავლობაში განსაზღვრავდა იმპერიების ბედს.",
+      content: "ევროპასა და აზიას შორის ბუნებრივი გზა. სტრატეგიული მნიშვნელობის სრუტე, რომელიც საუკუნეების განმავლობაში განსაზღვრავდა იმპერიების ბედს. სიგრძე მხოლოდ 31 კილომეტრია, მაგრამ მნიშვნელობა უზარმაზარი.",
       highlight: "სტრატეგიული მნიშვნელობა",
-      icon: "🌉",
+      image: bosphorusImg,
     },
     {
       title: "სუეცის არხი",
       subtitle: "ადამიანის ინჟინერია",
-      content: "1869 წელს გახსნილი არხი, რომელმაც სრულიად შეცვალა საერთაშორისო ვაჭრობის მარშრუტები. აფრიკის შემოვლის ნაცვლად - პირდაპირი გზა.",
-      highlight: "დაზოგილი 7000 კმ",
-      icon: "🚢",
+      content: "1869 წელს გახსნილი არხი, რომელმაც სრულიად შეცვალა საერთაშორისო ვაჭრობის მარშრუტები. აფრიკის შემოვლის ნაცვლად — პირდაპირი გზა ევროპიდან აზიაში. დაზოგილი 7,000 კილომეტრი!",
+      highlight: "დაზოგილი 7,000 კმ",
+      image: suezImg,
     },
     {
       title: "იაპონიის ზღვა",
       subtitle: "მოგზაურობის დასასრული",
-      content: "წყნარი ოკეანის კარი და აზიის აღმოსავლეთის საზღვარი. ვლადივოსტოკი - რუსეთის წყნარი ოკეანის ფლოტის მთავარი ბაზა.",
-      highlight: "დასასრულის სილამაზე",
-      icon: "🏔️",
+      content: "წყნარი ოკეანის კარი და აზიის აღმოსავლეთ საზღვარი. ვლადივოსტოკი — რუსეთის წყნარი ოკეანის ფლოტის მთავარი ბაზა და ჩვენი ეპიკური მოგზაურობის საბოლოო დანიშნულება.",
+      highlight: "მოგზაურობის დასრულება",
+      image: japanSeaImg,
     },
   ];
 
@@ -64,44 +67,47 @@ const DiarySlide = () => {
           </h2>
         </div>
 
-        {/* Diary entries */}
-        <div className="max-w-4xl mx-auto space-y-8">
+        {/* Diary entries with images */}
+        <div className="max-w-5xl mx-auto space-y-8">
           {diaryEntries.map((entry, index) => (
             <div
               key={entry.title}
               className={`${isVisible ? (index % 2 === 0 ? 'animate-slide-right' : 'animate-slide-left') : 'opacity-0'}`}
               style={{ animationDelay: `${(index + 1) * 200}ms` }}
             >
-              <div className="glass-card p-8 relative overflow-hidden group">
-                {/* Icon */}
-                <div className="absolute top-6 right-6 text-5xl opacity-20 group-hover:opacity-40 transition-opacity">
-                  {entry.icon}
-                </div>
-                
-                {/* Content */}
-                <div className="relative z-10">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Star className="w-4 h-4 text-accent" />
-                    <span className="text-sm text-accent font-medium">{entry.subtitle}</span>
+              <div className="glass-card overflow-hidden group">
+                <div className={`flex flex-col ${index % 2 === 1 ? 'md:flex-row-reverse' : 'md:flex-row'}`}>
+                  {/* Image */}
+                  <div className="md:w-2/5 aspect-video md:aspect-auto overflow-hidden">
+                    <img 
+                      src={entry.image} 
+                      alt={entry.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
                   
-                  <h3 className="font-display text-2xl md:text-3xl font-bold mb-4 group-hover:text-accent transition-colors">
-                    {entry.title}
-                  </h3>
-                  
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    {entry.content}
-                  </p>
-                  
-                  {/* Highlight badge */}
-                  <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium">
-                    <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
-                    {entry.highlight}
+                  {/* Content */}
+                  <div className="md:w-3/5 p-6 md:p-8 relative">
+                    <div className="flex items-center gap-3 mb-2">
+                      <Star className="w-4 h-4 text-accent" />
+                      <span className="text-sm text-accent font-medium">{entry.subtitle}</span>
+                    </div>
+                    
+                    <h3 className="font-display text-2xl md:text-3xl font-bold mb-4 group-hover:text-accent transition-colors">
+                      {entry.title}
+                    </h3>
+                    
+                    <p className="text-muted-foreground leading-relaxed mb-4">
+                      {entry.content}
+                    </p>
+                    
+                    {/* Highlight badge */}
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 text-accent text-sm font-medium">
+                      <span className="w-2 h-2 bg-accent rounded-full animate-pulse" />
+                      {entry.highlight}
+                    </div>
                   </div>
                 </div>
-
-                {/* Hover gradient */}
-                <div className="absolute inset-0 bg-gradient-to-r from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
               </div>
             </div>
           ))}
