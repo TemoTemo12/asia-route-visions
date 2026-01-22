@@ -1,12 +1,23 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Navigation from "@/components/presentation/Navigation";
+import HeroSlide from "@/components/presentation/HeroSlide";
+import RouteMapSlide from "@/components/presentation/RouteMapSlide";
+import SeasSlide from "@/components/presentation/SeasSlide";
+import IslandsSlide from "@/components/presentation/IslandsSlide";
+import DiarySlide from "@/components/presentation/DiarySlide";
+import ConclusionSlide from "@/components/presentation/ConclusionSlide";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background">
+      <Navigation />
+      <main id="hero">
+        <HeroSlide />
+        <RouteMapSlide />
+        <SeasSlide />
+        <IslandsSlide />
+        <DiarySlide />
+        <ConclusionSlide />
+      </main>
     </div>
   );
 };
